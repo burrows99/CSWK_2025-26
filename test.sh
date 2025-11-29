@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STUDENT_ID=xxxxxxx STUDENT_NAME="xxxxxx" python Testing.py \
+STUDENT_ID=6915661 STUDENT_NAME="Raunak Burrows" python Testing.py \
 --model_mode tf_efficientnet_b0 \
 --model-path Knife-Effb0/Knife-tf_efficientnet_b0-E10.pth \
 --dataset_location ../EEEM066_KnifeHunter \

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STUDENT_ID=xxxxxxx STUDENT_NAME="xxxxxx" python Training.py \
+STUDENT_ID=6915661 STUDENT_NAME="Raunak Burrows" python Training.py \
 --model_mode tf_efficientnet_b0 \
 --dataset_location ../EEEM066_KnifeHunter \
 --train_datacsv dataset/train.csv \
