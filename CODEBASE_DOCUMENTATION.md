@@ -117,12 +117,12 @@ A deep learning image classification pipeline using:
          │
          ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                        DATA PIPELINE                             │
-│  ┌──────────────┐   ┌──────────────┐   ┌───────────────┐      │
-│  │ Load Images  │──▶│  Transform   │──▶│   DataLoader  │      │
-│  │ (data.py)    │   │ & Augment    │   │  (batching)   │      │
-│  └──────────────┘   └──────────────┘   └───────────────┘      │
-│   knifeDataset class                                             │
+│                        DATA PIPELINE                            │
+│  ┌──────────────┐   ┌──────────────┐   ┌───────────────┐        │
+│  │ Load Images  │──▶│  Transform   │──▶│   DataLoader  │        │
+│  │ (data.py)    │   │ & Augment    │   │  (batching)   │        │
+│  └──────────────┘   └──────────────┘   └───────────────┘        │
+│   knifeDataset class                                            │
 └───────────────────────────────┬─────────────────────────────────┘
                                 │
                 ┌───────────────┴───────────────┐
@@ -132,43 +132,43 @@ A deep learning image classification pipeline using:
 │   TRAINING PIPELINE       │   │   TESTING PIPELINE        │
 │  (Training.py)            │   │   (Testing.py)            │
 │                           │   │                           │
-│  ┌────────────────────┐  │   │  ┌────────────────────┐  │
-│  │ Load Pretrained    │  │   │  │ Load Trained Model │  │
-│  │ Model (timm)       │  │   │  │ from Checkpoint    │  │
-│  └──────────┬─────────┘  │   │  └──────────┬─────────┘  │
+│  ┌────────────────────┐   │   │  ┌────────────────────┐   │
+│  │ Load Pretrained    │   │   │  │ Load Trained Model │   │
+│  │ Model (timm)       │   │   │  │ from Checkpoint    │   │
+│  └──────────┬─────────┘   │   │  └──────────┬─────────┘   │
 │             │             │   │             │             │
 │             ▼             │   │             ▼             │
-│  ┌────────────────────┐  │   │  ┌────────────────────┐  │
-│  │ Training Loop      │  │   │  │ Evaluation Loop    │  │
-│  │ - Forward pass     │  │   │  │ - Forward pass     │  │
-│  │ - Loss calculation │  │   │  │ - Metric calc      │  │
-│  │ - Backward pass    │  │   │  │ - mAP@5 reporting  │  │
-│  │ - Optimizer step   │  │   │  └────────────────────┘  │
-│  │ - Validation       │  │   │                           │
-│  └────────────────────┘  │   └───────────────────────────┘
+│  ┌────────────────────┐   │   │  ┌────────────────────┐   │
+│  │ Training Loop      │   │   │  │ Evaluation Loop    │   │
+│  │ - Forward pass     │   │   │  │ - Forward pass     │   │
+│  │ - Loss calculation │   │   │  │ - Metric calc      │   │
+│  │ - Backward pass    │   │   │  │ - mAP@5 reporting  │   │
+│  │ - Optimizer step   │   │   │  └────────────────────┘   │
+│  │ - Validation       │   │   │                           │
+│  └────────────────────┘   │   └───────────────────────────┘
 │             │             │
 │             ▼             │
-│  ┌────────────────────┐  │
-│  │ Save Checkpoints   │  │
-│  │ (per epoch)        │  │
-│  └────────────────────┘  │
+│  ┌────────────────────┐   │
+│  │ Save Checkpoints   │   │
+│  │ (per epoch)        │   │
+│  └────────────────────┘   │
 └───────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────┐
-│                     SUPPORTING MODULES                           │
-│                                                                   │
+│                     SUPPORTING MODULES                          │
+│                                                                 │
 │  args.py         - Command-line argument parsing                │
-│  utils.py        - Helper functions (metrics, logging, etc.)     │
-│  src/            - Modular components                            │
+│  utils.py        - Helper functions (metrics, logging, etc.)    │
+│  src/            - Modular components                           │
 │    ├── optimizers.py      - Optimizer initialization            │
 │    ├── lr_schedulers.py   - Learning rate schedulers            │
 │    └── transforms.py      - Custom augmentation transforms      │
 └─────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────┐
-│                          OUTPUT                                  │
-│                                                                   │
-│  logs/           - Training/testing logs with timestamps         │
+│                          OUTPUT                                 │
+│                                                                 │
+│  logs/           - Training/testing logs with timestamps        │
 │  checkpoints/    - Saved model weights per epoch                │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -1203,12 +1203,12 @@ python Training.py --lr-scheduler single_step --stepsize 30 --gamma 0.1
 
 **Experiments:**
 
-| Batch Size | GPU Memory | Training Speed | Generalization |
-|------------|------------|----------------|----------------|
-| 16 | Low | Slow | Better (more noise) |
-| 32 | Medium | Medium | Good |
-| 64 | High | Fast | Good |
-| 128 | Very High | Fastest | Potentially worse |
+| Batch Size | GPU Memory | Training Speed | Generalization      |
+|------------|------------|----------------|---------------------|
+| 16         | Low        | Slow           | Better (more noise) |
+| 32         | Medium     | Medium         | Good                |
+| 64         | High       | Fast           | Good                |
+| 128        | Very High  | Fastest        | Potentially worse   |
 
 **Commands:**
 ```bash
